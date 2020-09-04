@@ -36,6 +36,7 @@ class LS:
         return s
 
     # INSERE UM CLIENTE DE R1 EM R2
+    # # PEGA UM CLIENTE DA ROTA R1 E INSERE NA PRIMEIRA MELHOR POSIÇÃO NA ROTA R2
     def shift_01(self, s):
         # s1 = copy.deepcopy(s)
         f = 0
@@ -47,7 +48,8 @@ class LS:
                 if f == 1:
                     s.update_distance()
                     return 1
-    
+    # INSERE O CLIENTE C EM R2, APAGA C DE R1 E VERIFICA SE EXISTIU MELHORA
+    # COMPARA AS DISTANCIAS ANTES DE ANTES E DEPOIS DA TROCA
     def insert_shift_01(self, client, i, j, vehicle_1, vehicle_2, s1):
         previous_distance = vehicle_1.get_distance() + vehicle_2.get_distance()
         vehicle_2.insert_client(j, client)
@@ -79,7 +81,7 @@ class LS:
                 if f == 1:
                     s.update_distance()
                     return 1
-
+    # FAZ A TROCA E VERIFICA SE EXISTIU MELHORA
     def insert_shift_02(self, c1, c2, i, j, v1, v2, s1):
         previous_distance = v1.get_distance() + v2.get_distance()
         v2.add_consecutive(c1, c2, j)
