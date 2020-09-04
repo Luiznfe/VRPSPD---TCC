@@ -41,6 +41,7 @@ class GeneticAlgorithm:
         return 0
 
     # SELECIONA INDIVÍDUOS POR MEIO DO FITNESS E PROBABILIDADE
+    # NÃO ESTOU USANDO NO MOMENTO
     def roulette_wheel_selection(self, fitness, population):
         prob = []
         num = []
@@ -72,7 +73,7 @@ class GeneticAlgorithm:
                 selected.clear()
         return selected
 
-    # UTILIZA TOUNAMENT SELECTION PARA DEFINIR OS PAIS 
+    # UTILIZA TOUNAMENT SELECTION PARA DEFINIR OS PAIS (ESTOU USANDO ESSA)
     def parents_selection(self, population, k):
         parents = []
         pop = copy.deepcopy(population)
@@ -81,7 +82,7 @@ class GeneticAlgorithm:
             parents.append(self.tournament_selection(pop, k))
         return parents
 
-    # RETORNA A SEQUÊNCIA DE VISITAÇÃO DE UMA INSTÂNCIA (REMOVE )
+    # RETORNA A SEQUÊNCIA DE VISITAÇÃO DE UMA INSTÂNCIA
     def visiting_sequence(self, list, cut_points, inherited):
         seq = []
         i = cut_points[1]
@@ -103,7 +104,7 @@ class GeneticAlgorithm:
                 return i
         return 0
 
-    # CRIA OS DESCÊNDESTES
+    # CRIA OS DESCENDENTES
     def offspring(self, p1, p2, cut_points):
         q = []
         # INICIALIZA O FILHO COM UM CARACTERE QUALQUER (A)
@@ -132,7 +133,7 @@ class GeneticAlgorithm:
         return q
 
     # É NECESSÁRIO INFORMAR A QUANTIDADE DE CLIENTES (ATENÇÃO A COMO OS PONTOS DE CORTE SÃO ESCOLHIDOS)
-    # NO CASO ESTOU CONSIDERANDO QUE OS PONTOS DE CORTE COMEÇAM DE 2 ATE N-2, O QUE ME DEIXA COM UAM MARGEM MINIMA NA DIVISÃO DE VETOR
+    # NO CASO ESTOU CONSIDERANDO QUE OS PONTOS DE CORTE COMEÇAM DE 2 ATE N-2, O QUE ME DEIXA COM UAM MARGEM MINIMA NA DIVISÃO DA LISTA
 
     # ORDER COSSOVER OPERATION // ESPEFIFICAR Ã QUANTIDADE DE CLIENTES = n
     # O PRIMEIRO PONTO DE CORTE SO PODE SER NO MÁXIMO IGUAL AO NÚMERO DE CLIENTES - 2
@@ -165,14 +166,14 @@ class GeneticAlgorithm:
 
    	# UMA PROBABILIDADE DE 20% FOI ESTIPULADA PARA A REALIZAÇÃO
     # SWAP MUTATION
-    # DEVE ESTAR ERRADA
+
     def mutation(self, s):
         while True:
             i = random.randint(0, len(s.get_vehicleList()) - 1)
             vehicle = s.get_vehicleList()[i]
             if len(vehicle.get_route()) > 3:
                 break
-
+        # ID = 0 SIGNIFICA DEPÓSITO 
         while True:
             vehicle_c = copy.deepcopy(vehicle)
             while True:
