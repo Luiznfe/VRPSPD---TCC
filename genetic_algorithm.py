@@ -236,6 +236,7 @@ class GeneticAlgorithm:
     def tournament_selection(self, population, k):
         selected = []
         random_num = []
+        # sorteia k de acordo com o tamanho da população atual
         random_num = list(
             map(int, random.sample(range(0, len(population)), k)))
         for i in random_num:
