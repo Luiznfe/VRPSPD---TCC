@@ -7,6 +7,7 @@ def data_read(path):
     if f.mode == 'r':
         data = f.readlines()
     f.close()
+    # capacidade 
     cap = float(data[0])
     n = b = int(data[1]) + 1
     linha = list()
