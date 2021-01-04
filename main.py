@@ -9,7 +9,6 @@ filhos = []
 algo = GeneticAlgorithm()
 
 inicio = time.time()
-pop = algo.generate_population("C:/Users/luizn/Desktop/ProjetoTCC/c0530.txt", 20)
 n = 0
 # for i in range(1):
 # 	f = algo.fitness(pop, 1.7)
